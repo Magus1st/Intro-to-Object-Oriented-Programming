@@ -24,11 +24,20 @@ class BankAccount {
         string accountNumber;
         double accountBalance;
 };
+double setBalance(double accountBalance, BankAccount &account) {
+    // Function to set the account balance
+    cout << "Enter initial account balance: ";
+    cin >> accountBalance;
+    account.accountBalance = accountBalance;
+    system("cls");
+    return 0;
+}
 double balanceInquiry(double accountBalance) {
     // Function to check account balance
     cout << "Your current account balance is: $" << accountBalance << endl;
     cin.ignore(); // Clear the input buffer
     cin.get(); // Wait for user input before returning
+    system("cls");
     return 0;
 }
 double debitAccount(double accountBalance, double amount) {
@@ -37,12 +46,14 @@ double debitAccount(double accountBalance, double amount) {
         cout << "Insufficient funds. Transaction declined." << endl;
         cin.ignore(); // Clear the input buffer
         cin.get(); // Wait for user input before returning
+        system("cls");
         return accountBalance; // sets the account balance to the same value, indicating failure
     }
     accountBalance -= amount;
     cout << "Debited $" << amount << ". New balance: $" << accountBalance << endl;
     cin.ignore(); // Clear the input buffer
     cin.get(); // Wait for user input before returning
+    system("cls");
     return accountBalance; // Indicate success
 }
 double creditAccount(double accountBalance, double amount) {
@@ -51,6 +62,7 @@ double creditAccount(double accountBalance, double amount) {
     cout << "Credited $" << amount << ". New balance: $" << accountBalance << endl;
     cin.ignore(); // Clear the input buffer
     cin.get(); // Wait for user input before returning
+    system("cls");
     return accountBalance; // Indicate success
 }
 void displayMenu(BankAccount account) {
@@ -70,7 +82,7 @@ int main(){
     class BankAccount account;
     account.accountHolderName = "David Russell";
     account.accountNumber = "123";
-    account.accountBalance = 1000.00;
+    setBalance(1000, account); // Set initial balance
     int choice=0;
     double creditAmount=0;
     double debitAmount=0;
